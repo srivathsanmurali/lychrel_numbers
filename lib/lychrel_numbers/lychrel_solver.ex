@@ -30,7 +30,7 @@ defmodule LychrelNumbers.LychrelSolver do
     end
   end
 
-  def lychrel_search(number, trace, count) when count >= @maxCount do
+  def lychrel_search(_number, trace, count) when count >= @maxCount do
     {:ok, original} = Enum.fetch(trace, 0)
     {:out_of_limit, original, trace, count}
   end
