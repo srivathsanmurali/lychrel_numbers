@@ -1,5 +1,5 @@
 defmodule LychrelNumbers.LychrelSolver do
-  @maxCount 25
+  @maxCount 100 
  
   def reverse_number (number) do
     number

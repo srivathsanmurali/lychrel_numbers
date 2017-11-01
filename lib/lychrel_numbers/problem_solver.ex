@@ -12,9 +12,9 @@ defmodule LychrelNumbers.ProblemSolver do
   end
 
   def handle_events(events, _from, state) do
-    for event <- events do
-      IO.inspect LychrelSolver.lychrel_search(event)
-    end
+    events
+    |> Enum.map(&LychrelSolver.lychrel_search/1)
+    |> IO.inspect
 
     {:noreply, [], state}
   end
