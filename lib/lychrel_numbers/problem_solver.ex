@@ -8,7 +8,7 @@ defmodule LychrelNumbers.ProblemSolver do
 
   def init(state) do
     IO.puts "Consumer"
-    {:consumer, state, subscribe_to: [{LychrelNumbers.ProblemStore, min_demand: 10, max_demand: 20}]}
+    {:consumer, state, subscribe_to: [{{:global, :lychrelStore}, min_demand: 10, max_demand: 20}]}
   end
 
   def handle_events(events, _from, state) do

@@ -5,8 +5,14 @@ defmodule LychrelNumbers.ProblemStore do
   @max_limit 1_000_000
   
   def start_link(counter) do
-    IO.puts "Producer"
-    GenStage.start_link(__MODULE__, counter, name: __MODULE__)
+    case GenStage.start_link(__MODULE__, counter, name: {:global, :lychrelStore}) do
+      {:ok, pid} ->
+        IO.puts "Started #{__MODULE__} master"
+        {:ok, pid}
+      {:error, {:already_started, pid}} ->
+        IO.puts "Started #{__MODULE__} slave"
+        {:ok, pid}
+    end
   end
 
   def init(counter) do
