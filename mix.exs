@@ -17,7 +17,7 @@ defmodule LychrelNumbers.Mixfile do
     # Specify extra applications you'll use from Erlang/Elixir
     [
       extra_applications: [:logger],
-      #mod: {LychrelNumbers.Application, []}
+      mod: {LychrelNumbers.Application, []}
     ]
   end
 

@@ -4,12 +4,8 @@ defmodule LychrelNumbers.Supervisor do
   def start_link do
     children = [
       worker(LychrelNumbers.ProblemStore, [0]),
+      worker(LychrelNumbers.ProblemSolverSupervisor, [], id: 1)
     ]
-    consumers =
-      for id <- 1..System.schedulers_online*2 do
-        worker(LychrelNumbers.ProblemSolver, [], id: id)
-      end 
-
-    Supervisor.start_link(children ++ consumers, strategy: :one_for_one)
+    Supervisor.start_link(children , strategy: :one_for_one)
   end
 end
