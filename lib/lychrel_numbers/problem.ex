@@ -4,7 +4,7 @@ defmodule LychrelNumbers.Problem do
   def enqueue(start_number, end_number) do
     problems = start_number..end_number
     |> Enum.map(fn x ->
-      %{number: x, status: "free", last_number: x, count: 0}
+      %{number: x, status: "free", last_number: Integer.to_string(x), count: 0}
       end)
 
     LychrelNumbers.Repo.insert_all "problems", problems

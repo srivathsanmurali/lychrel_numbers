@@ -6,14 +6,14 @@ defmodule LychrelNumbers.ProblemSolver do
   end
 
   def run_problem(event) do
-      case LychrelSolver.lychrel_search(event.last_number) do
+      {start_number, _} = Integer.parse(event.last_number)
+      case LychrelSolver.lychrel_search(start_number) do
         {:completed, _original, trace, count} -> 
           {:ok, last_number} = Enum.fetch(trace, -1)
-          Problem.update_problem(event.id, "completed", last_number, event.count + count)
+          Problem.update_problem(event.id, "completed", Integer.to_string(last_number), event.count + count)
         {:out_of_limit, _original, trace, count} ->
           {:ok, last_number} = Enum.fetch(trace, -1)
-          IO.inspect {event, trace, last_number, count}
-          Problem.update_problem(event.id, "free", last_number, event.count + count)
+          Problem.update_problem(event.id, "free", Integer.to_string(last_number), event.count + count)
       end
       {:ok}
   end
