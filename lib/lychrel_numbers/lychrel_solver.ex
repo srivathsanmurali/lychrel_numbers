@@ -13,7 +13,7 @@ defmodule LychrelNumbers.LychrelSolver do
   end
 
   def lychrel_search(number) do
-    lychrel_search(number, [number], 0)
+    lychrel_search(number, [], 0)
   end
 
   def lychrel_search(number, trace, count) when count < @maxCount do
@@ -30,9 +30,8 @@ defmodule LychrelNumbers.LychrelSolver do
     end
   end
 
-  def lychrel_search(_number, trace, count) when count >= @maxCount do
-    {:ok, original} = Enum.fetch(trace, 0)
-    {:out_of_limit, original, trace, count}
+  def lychrel_search(number, trace, count) when count >= @maxCount do
+    {:out_of_limit, number, trace, count}
   end
 
   def sum(x,y) do x + y end

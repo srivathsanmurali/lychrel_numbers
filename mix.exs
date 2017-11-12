@@ -16,7 +16,7 @@ defmodule LychrelNumbers.Mixfile do
   def application do
     # Specify extra applications you'll use from Erlang/Elixir
     [
-      extra_applications: [:logger],
+      extra_applications: [:logger, :postgrex, :ecto],
       mod: {LychrelNumbers.Application, []}
     ]
   end
@@ -32,7 +32,9 @@ defmodule LychrelNumbers.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:gen_stage, "~> 0.12"}
+      {:gen_stage, "~> 0.12"},
+      {:ecto, "~> 2.2"},
+      {:postgrex, "~> 0.13.3"}
     ]
   end
 end

@@ -11,7 +11,7 @@ defmodule LychrelNumbers.ProblemSolverSupervisor do
     ]
 
     {:ok, children, strategy: :one_for_one, subscribe_to: [
-        {{:global, :lychrelStore}, min_demand: 10, max_demand: 20}
+        {LychrelNumbers.ProblemStore, min_demand: 10, max_demand: 20}
       ]
     }
   end
